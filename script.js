@@ -55,13 +55,16 @@ function addColumn() {
 // Remove Row
 function removeRow() {
     for (var j = 0; j < numCols;j++){
-    document.getElementById(numRows-1).lastElementChild.remove();}
+        document.getElementById(numRows-1).lastElementChild.remove();}
     document.getElementById(numRows-1).remove();
     numRows--;
 }
 
 // Remove Column
 function removeColumn() {
+    for (var j = 0; j < numRows;j++){
+        document.getElementById(j).lastElementChild.remove();}
+    numCols--;
 }
 
 // Fill All Uncolored
