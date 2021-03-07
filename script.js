@@ -53,10 +53,16 @@ function addColumn() {
 }
 
 // Remove Row
-function removeRow() {}
+function removeRow() {
+    for (var j = 0; j < numCols;j++){
+    document.getElementById(numRows-1).lastElementChild.remove();}
+    document.getElementById(numRows-1).remove();
+    numRows--;
+}
 
 // Remove Column
-function removeColumn() {}
+function removeColumn() {
+}
 
 // Fill All Uncolored
 function fillAllUncolored() {}
