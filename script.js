@@ -90,7 +90,12 @@ function fillAll() {
 }
 
 // Clear All
-function clearAll() {}
+function clearAll() {
+    var cells = grid.getElementsByTagName("td")
+    for(let i = 0; i < cells.length; i++) {
+        cells[i].style.backgroundColor = "white" 
+    }
+}
 
 // Select a Color (Changes glob var colorSelected)
 function selected() {}
