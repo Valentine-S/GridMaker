@@ -70,7 +70,16 @@ function removeColumn() {
 }
 
 // Fill All Uncolored
-function fillAllUncolored() {}
+function fillAllUncolored() {
+    var cells = grid.getElementsByTagName("td")
+    for(let i = 0; i < cells.length; i++) {
+        currentStyle = getComputedStyle(cells[i])
+        currentColor = currentStyle.backgroundColor
+        if(currentColor == "rgb(255, 255, 255)") {
+            cells[i].style.backgroundColor = colorSelected
+        }
+    }
+}
 
 // Fill
 function fill() {}
