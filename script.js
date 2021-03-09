@@ -1,4 +1,4 @@
-jlet numRows = 0;
+let numRows = 0;
 let numCols = 0;
 let colorSelected;
 var grid = document.getElementById('grid')
