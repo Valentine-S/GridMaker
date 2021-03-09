@@ -1,70 +1,72 @@
 let numRows = 0;
 let numCols = 0;
 let colorSelected;
+var grid = document.getElementById('grid')
 
 /* Button Functions: */
 
 // Add Row
 function addRow() {
-    var row = document.createElement('div');
-    row.className = "row";
-    row.id = numRows;
+    var row = document.createElement('tr');
+    row.className = "row"
     if(numCols == 0){
-        var box = document.createElement('div');
-        box.className = "box";
-        row.appendChild(box);
-        numCols++;
-    }
-    else{
-        for (var j = 0; j < numCols;j++){
-            var box = document.createElement('div');
-            box.className = "box";
-            row.appendChild(box);
+        let cell = document.createElement('td')
+        row.appendChild(cell)
+        numCols++
+    } 
+    else {
+        for (let i = 0; i < numCols; i++) { 
+            let cell = document.createElement('td')
+            row.appendChild(cell)
         }
     }
-    numRows++;
-    document.getElementById('grid').appendChild(row);
+    grid.appendChild(row)
+    numRows++
 }
 
 // Add Column
 function addColumn() {
-    let curRow = 0;
-
-    if(numRows == 0){
-        var row = document.createElement('div');
-        row.className = "row";
-        row.id = numRows;
-        numRows++;
-        var box = document.createElement('div');
-        box.className = "box";
-        row.appendChild(box);
-        document.getElementById('grid').appendChild(row);
+    if (numRows == 0) {
+        addRow()
     }
-    else{
-        for (var j = 0; j < numRows; j++) {
-            var box = document.createElement('div');
-            box.className = "box";
-            box.id = curRow + "," + numCols; //The id of a box would be in the form of "Row,Col" Ex. "5,3"
-            document.getElementById(curRow).appendChild(box);
-            curRow++;
-        }
+    else { 
+        let rows = document.querySelectorAll('.row');
+        rows.forEach(function (row) {
+            let col = document.createElement('td')
+            row.appendChild(col)
+        })
+        numCols++; 
     }
-    numCols++;
 }
 
 // Remove Row
 function removeRow() {
-    for (var j = 0; j < numCols;j++){
-        document.getElementById(numRows-1).lastElementChild.remove();}
-    document.getElementById(numRows-1).remove();
-    numRows--;
+    if (numRows > 0) {
+        grid.lastElementChild.remove()
+        numRows--;
+    }
+    if(numRows == 0) {
+        numCols = 0
+    }
+
 }
 
 // Remove Column
 function removeColumn() {
-    for (var j = 0; j < numRows;j++){
-        document.getElementById(j).lastElementChild.remove();}
-    numCols--;
+    if(numCols > 0) {
+        let rows = document.querySelectorAll('.row')
+        rows.forEach(function (row) {
+            row.lastElementChild.remove()
+        })
+        numCols--;
+    }
+    if(numCols == 0) {
+        while(grid.firstChild) {
+            grid.removeChild(grid.lastChild)
+        }
+        numRows = 0
+    }
+
 }
 
 // Fill All Uncolored
