@@ -1,4 +1,4 @@
-let numRows = 0;
+jlet numRows = 0;
 let numCols = 0;
 let colorSelected;
 var grid = document.getElementById('grid')
@@ -82,7 +82,12 @@ function fillAllUncolored() {
 }
 
 // Fill
-function fill() {}
+function fillAll() {
+    var cells = grid.getElementsByTagName("td")
+    for(let i = 0; i < cells.length; i++) {
+        cells[i].style.backgroundColor = colorSelected 
+    }
+}
 
 // Clear All
 function clearAll() {}
