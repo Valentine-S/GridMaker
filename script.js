@@ -6,67 +6,66 @@ let colorSelected;
 
 // Add Row
 function addRow() {
-    var row = document.createElement('div');
-    row.className = "row";
-    row.id = numRows;
+    var row = document.createElement('tr');
+    row.className = "row"
     if (numCols == 0) {
-        var box = document.createElement('div');
-        box.className = "box";
-        row.appendChild(box);
-        numCols++;
+        let cell = document.createElement('td')
+        row.appendChild(cell)
+        numCols++
     }
     else {
-        for (var j = 0; j < numCols; j++) {
-            var box = document.createElement('div');
-            box.className = "box";
-            row.appendChild(box);
+        for (let i = 0; i < numCols; i++) {
+            let cell = document.createElement('td')
+            row.appendChild(cell)
         }
     }
-    numRows++;
-    document.getElementById('grid').appendChild(row);
+    grid.appendChild(row)
+    numRows++
 }
 
 // Add Column
 function addColumn() {
-    let curRow = 0;
-
     if (numRows == 0) {
-        var row = document.createElement('div');
-        row.className = "row";
-        row.id = numRows;
-        numRows++;
-        var box = document.createElement('div');
-        box.className = "box";
-        row.appendChild(box);
-        document.getElementById('grid').appendChild(row);
+        addRow()
     }
     else {
-        for (var j = 0; j < numRows; j++) {
-            var box = document.createElement('div');
-            box.className = "box";
-            box.id = curRow + "," + numCols; //The id of a box would be in the form of "Row,Col" Ex. "5,3"
-            document.getElementById(curRow).appendChild(box);
-            curRow++;
-        }
+        let rows = document.querySelectorAll('.row');
+        rows.forEach(function (row) {
+            let col = document.createElement('td')
+            row.appendChild(col)
+        })
+        numCols++;
     }
-    numCols++;
 }
 
 // Remove Row
 function removeRow() {
-    for (var j = 0; j < numCols; j++) {
-        document.getElementById(numRows - 1).lastElementChild.remove();
+    if (numRows > 0) {
+        grid.lastElementChild.remove()
+        numRows--;
     }
-    document.getElementById(numRows - 1).remove();
-    numRows--;
+    if (numRows == 0) {
+        numCols = 0
+    }
+
 }
 
 // Remove Column
 function removeColumn() {
-    for (var j = 0; j < numRows; j++) {
-        document.getElementById(j).lastElementChild.remove();
+    if (numCols > 0) {
+        let rows = document.querySelectorAll('.row')
+        rows.forEach(function (row) {
+            row.lastElementChild.remove()
+        })
+        numCols--;
     }
-    numCols--;
+    if (numCols == 0) {
+        while (grid.firstChild) {
+            grid.removeChild(grid.lastChild)
+        }
+        numRows = 0
+    }
+
 }
 
 // Fill All Uncolored
@@ -81,8 +80,8 @@ function fillAllUncolored() {
     }
 }
 
-// Fill 
-function fillAll() {
+// Fill
+function fill() {
     var cells = grid.getElementsByTagName("td")
     for (let i = 0; i < cells.length; i++) {
         cells[i].style.backgroundColor = colorSelected
@@ -90,28 +89,42 @@ function fillAll() {
 }
 
 // Clear All
-function clearAll() { }
-
-// Select a Color (Changes glob var colorSelected)
-function selected() {
-    let optionSelected = document.getElementById("selectedID"); //select onchange componnet's option value strings
-    let color = optionSelected.option.getElementById("value"); // ?
-    switch (color) {
-        case "Red":
-            colorSelected = "rgb(255, 0, 0)";
-        case "Yellow":
-            colorSelected = "rgb(255, 255, 0)";
-        case "Blue":
-            colorSelected = "rgb(0, 0, 255)";
-        case "Green":
-            colorSelected = "rgb(0, 255, 0)";
+function clearAll() {
+    var cells = grid.getElementsByTagName("td")
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].style.backgroundColor = "white"
     }
 }
 
+// Select a Color (Changes glob var colorSelected)
+function selected() {
+    let optionSelected = document.getElementById("selectedID");
+    let color = optionSelected.value;
+    if (color == "Red") {
+        colorSelected = "#FF0000";
+    }
+    else if (color == "Yellow") {
+        colorSelected = "#FFFF00";
+    }
+    else if (color == "Green") {
+        colorSelected = "#00FF00";
+    }
+    else if (color == "Blue") {
+        colorSelected = "#0000FF";
+    }
+    //changeCell(); //where to put so this is always active ? 
+}
+
+
 // Change Cell Color(change color By clicking)
 function changeCell() {
-    document.getElementById("box").click;
+    var clicked = document.getElementById("box").click;
+    if (clicked == true) {
+        alert("box clicked")
+        document.getElementById("box").background = colorSelected;
+    }
     // mouse clicks on cell change to colorSelecetd value
-} $("#box").animate().css({
+}
+$("#box").animate().css({
     background: colorSelected
 }, 2500);
