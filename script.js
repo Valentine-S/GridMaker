@@ -118,7 +118,7 @@ function selected() {
 
 // Change Cell Color(change color By clicking)
 function changeCell() {
-    var clicked = document.getElementById("box").click;
+    var clicked = document.getElementById("td").addEventListener("click");
     if (clicked == true) {
         alert("box clicked")
         document.getElementById("box").background = colorSelected;
