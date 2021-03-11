@@ -21,6 +21,7 @@ td {
   cursor: pointer;
   display: inline-block;
   float: left;
+  /* transition: background-color 2.5s ease-out; */
 }
 
 .row {
@@ -28,3 +29,4 @@ td {
   float:left;
   width:100%;
 }
+
