@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Grid</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <button onclick="addRow()">Add Row</button>
-    <button onclick="addColumn()">Add Column</button>
-    <button onclick="removeRow()">Remove Row</button>
-    <button onclick="removeColumn()">Remove Column</button>
-    <button onclick="fillAllUncolored()">Fill All Uncolored</button>
-    <button onclick="fill()">Fill</button>
-    <button onclick="clearAll()">Clear</button>
-    <select onchange="selected()" id="selectedID">
-      <option value="SELECT">SELECT</option>
-      <option value="Red">Red</option>
-      <option value="Yellow">Yellow</option>
-      <option value="Green">Green</option>
-      <option value="Blue">Blue</option>
-    </select>
-    <div id="grid"></div>
-    <script src="script.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Grid</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <button onclick="addRow()">Add Row</button>
+  <button onclick="addColumn()">Add Column</button>
+  <button onclick="removeRow()">Remove Row</button>
+  <button onclick="removeColumn()">Remove Column</button>
+  <button onclick="fillAllUncolored()">Fill All Uncolored</button>
+  <button onclick="fill()">Fill</button>
+  <button onclick="clearAll()">Clear</button>
+  <select onchange="selected()" id="selectedID">
+    <option value="SELECT">SELECT</option>
+    <option value="Red">Red</option>
+    <option value="Yellow">Yellow</option>
+    <option value="Green">Green</option>
+    <option value="Blue">Blue</option>
+  </select>
+  <div id="grid"></div>
+  <script src="script.js"></script>
+</body>
+
 </html>
