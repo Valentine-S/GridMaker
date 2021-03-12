@@ -29,6 +29,7 @@ function addRow() {
     grid.appendChild(row)
     numRows++
 }
+// adds a row of cells when button is clicked on webpage 
 
 // Add Column
 function addColumn() {
@@ -47,7 +48,8 @@ function addColumn() {
         numCols++;
     }
 }
-
+// adds a column of cells and cycles through rows to add appropriate num 
+// of cells to make a column 
 
 // Remove Row
 function removeRow() {
@@ -60,6 +62,7 @@ function removeRow() {
     }
 
 }
+// removes a row of cells
 
 // Remove Column
 function removeColumn() {
@@ -78,6 +81,7 @@ function removeColumn() {
     }
 
 }
+// removes a column of cells
 
 // Fill All Uncolored
 function fillAllUncolored() {
@@ -90,6 +94,8 @@ function fillAllUncolored() {
         }
     }
 }
+// changes the color of all uncolored cells to a color chosen from dropdown
+// b determini g if cells are white from rgb value
 
 // Fill
 function fillAll() {
@@ -98,6 +104,8 @@ function fillAll() {
         cells[i].style.backgroundColor = colorSelected
     }
 }
+// fills all cells with a clor chosen form the color select dropdown 
+
 
 // Clear All
 function clearAll() {
@@ -106,6 +114,8 @@ function clearAll() {
         cells[i].style.backgroundColor = "white"
     }
 }
+// makes all cells revert to having no color by cycling through all 
+// of the cells
 
 // Select a Color (Changes glob var colorSelected)
 function selected() {
@@ -123,12 +133,13 @@ function selected() {
     else if (color == "Blue") {
         colorSelected = "#0000FF";
     }
-    //changeCell(); //where to put so this is always active ? 
 }
 
 function changeBackground() {
     this.style.backgroundColor = colorSelected;
 }
+// changeBackgorund is used in addRow and addColumn to enable the changing 
+// of an individual cell's color
 
 
 // Change Cell Color(change color By clicking)
@@ -140,3 +151,4 @@ function changeCell() {
     }
     // mouse clicks on cell change to colorSelecetd value
 }
+// implements a dropdown to choose color options for the cells
