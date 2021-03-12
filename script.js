@@ -11,12 +11,18 @@ function addRow() {
     row.className = "row"
     if (numCols == 0) {
         let cell = document.createElement('td')
+        cell.onclick = function () {
+            this.style.backgroundColor = colorSelected;
+        }
         row.appendChild(cell)
         numCols++
     }
     else {
         for (let i = 0; i < numCols; i++) {
             let cell = document.createElement('td')
+            cell.onclick = function () {
+                this.style.backgroundColor = colorSelected;
+            }
             row.appendChild(cell)
         }
     }
@@ -33,11 +39,15 @@ function addColumn() {
         let rows = document.querySelectorAll('.row');
         rows.forEach(function (row) {
             let col = document.createElement('td')
+            col.onclick = function () {
+                this.style.backgroundColor = colorSelected;
+            }
             row.appendChild(col)
         })
         numCols++;
     }
 }
+
 
 // Remove Row
 function removeRow() {
@@ -116,6 +126,10 @@ function selected() {
     //changeCell(); //where to put so this is always active ? 
 }
 
+function changeBackground() {
+    this.style.backgroundColor = colorSelected;
+}
+
 
 // Change Cell Color(change color By clicking)
 function changeCell() {
@@ -126,6 +140,3 @@ function changeCell() {
     }
     // mouse clicks on cell change to colorSelecetd value
 }
-$("#box").animate().css({
-    background: colorSelected
-}, 2500);
